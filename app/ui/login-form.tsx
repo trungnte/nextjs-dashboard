@@ -4,17 +4,18 @@ import { lusitana } from '@/app/ui/fonts';
 import {
   AtSymbolIcon,
   KeyIcon,
-  // ExclamationCircleIcon,
+  ExclamationCircleIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from './button';
 
 import { useActionState } from 'react';
-import { authenticate } from '@/app/lib/action';
+import { authenticate, State } from '@/app/lib/action';
 import { useSearchParams } from 'next/navigation';
 
 
 export default function LoginForm() {
+  // const initialState: State = { message: null, errors: {} };
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
   const [errorMessage, formAction, isPending] = useActionState(
