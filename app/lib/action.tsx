@@ -136,19 +136,19 @@ export async function authenticate(
 ) {
   try {
     console.log('FormData:', formData);
-    console.log('prevState:', prevState);
+    // console.log('prevState:', prevState);
     await signIn('credentials', formData);
   } catch (error) {
-    // if (error instanceof AuthError) {
-    //   switch (error.type) {
-    //     case 'CredentialsSignin':
-    //       return 'Invalid credentials.';
-    //     default:
-    //       return 'Something went wrong.';
-    //   }
-    // }
-
-    return 'Something went wrong.';
-    // throw error;
+    console.log('Error:', error);
+    if (error instanceof AuthError) {
+      // switch (error.type) {
+      //   case 'CredentialsSignin':
+      //     return 'Invalid credentials.';
+      //   default:
+      //     return 'Something went wrong.';
+      // }
+      return 'Something went wrong.';
+    }
+    throw error;
   }
 }
